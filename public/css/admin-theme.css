@@ -1,0 +1,207 @@
+:root {
+    --c1-bg-0: #060b18;
+    --c1-bg-1: #0f1b33;
+    --c1-bg-2: #17253f;
+    --c1-text: #f5efe5;
+    --c1-muted: #b6c0d0;
+    --c1-neon: #d9a35f;
+    --c1-neon-2: #f0c784;
+    --c1-line: rgba(217, 163, 95, 0.3);
+    --c1-shadow: 0 0 16px rgba(217, 163, 95, 0.24);
+}
+
+body,
+body.layout-fixed,
+.content-wrapper {
+    background:
+        radial-gradient(
+            circle at 12% 12%,
+            rgba(95, 146, 229, 0.18),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 88% 18%,
+            rgba(217, 163, 95, 0.15),
+            transparent 36%
+        ),
+        linear-gradient(
+            135deg,
+            var(--c1-bg-0),
+            var(--c1-bg-1) 48%,
+            var(--c1-bg-0)
+        );
+    color: var(--c1-text);
+}
+
+.main-header.navbar,
+.main-footer,
+.content-header {
+    background: rgba(8, 14, 28, 0.88);
+    color: var(--c1-text);
+    border-color: var(--c1-line);
+}
+
+.main-header .nav-link,
+.main-header .navbar-nav .nav-link,
+.content-header h1 {
+    color: var(--c1-text) !important;
+}
+
+.main-sidebar,
+.main-sidebar::before {
+    background: linear-gradient(180deg, #0a1120 0%, #0c1428 100%) !important;
+}
+
+.brand-link {
+    border-bottom: 1px solid var(--c1-line) !important;
+}
+
+.brand-text,
+.brand-link .brand-text,
+.nav-sidebar .nav-link,
+.nav-sidebar .nav-icon {
+    color: #d4e6d9 !important;
+}
+
+.nav-sidebar .nav-link {
+    border-radius: 10px;
+    margin: 2px 8px;
+    transition: all 0.2s ease;
+}
+
+.nav-sidebar .nav-link:hover {
+    background: rgba(217, 163, 95, 0.14) !important;
+    color: var(--c1-neon) !important;
+}
+
+.nav-sidebar .menu-open > .nav-link,
+.nav-sidebar .nav-link.active {
+    background: linear-gradient(
+        120deg,
+        rgba(217, 163, 95, 0.26),
+        rgba(95, 146, 229, 0.2)
+    ) !important;
+    color: #fff6ea !important;
+    box-shadow: var(--c1-shadow);
+}
+
+.sidebar-dark-primary .nav-sidebar > .nav-item > .nav-link.active {
+    background: linear-gradient(
+        120deg,
+        rgba(217, 163, 95, 0.26),
+        rgba(95, 146, 229, 0.2)
+    ) !important;
+}
+
+.card,
+.small-box,
+.info-box,
+.callout {
+    background: linear-gradient(
+        120deg,
+        rgba(10, 16, 32, 0.94),
+        rgba(9, 14, 28, 0.94)
+    );
+    color: var(--c1-text);
+    border: 1px solid var(--c1-line);
+    border-radius: 14px;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+}
+
+.card-header,
+.card-footer {
+    border-color: var(--c1-line);
+}
+
+.btn-primary,
+.btn-info {
+    background: linear-gradient(
+        120deg,
+        var(--c1-neon),
+        var(--c1-neon-2)
+    ) !important;
+    border-color: transparent !important;
+    color: #041208 !important;
+    font-weight: 700;
+}
+
+.btn-primary:hover,
+.btn-info:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--c1-shadow);
+}
+
+.btn-danger {
+    background: #ff4d5a !important;
+    border-color: transparent !important;
+}
+
+.table,
+.table td,
+.table th {
+    color: var(--c1-text) !important;
+    border-color: rgba(217, 163, 95, 0.2) !important;
+}
+
+.table thead,
+.table thead th,
+.bg-primary {
+    background: linear-gradient(120deg, #21406e, #b98748) !important;
+    color: #fff5e7 !important;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.table-striped tbody tr:hover {
+    background: rgba(217, 163, 95, 0.1);
+}
+
+.dataTables_wrapper .dataTables_filter input,
+.dataTables_wrapper .dataTables_length select,
+.form-control,
+.custom-select,
+input,
+select,
+textarea {
+    background: rgba(5, 10, 20, 0.95) !important;
+    border: 1px solid rgba(217, 163, 95, 0.32) !important;
+    color: var(--c1-text) !important;
+    border-radius: 10px;
+}
+
+.dataTables_wrapper .dataTables_filter input:focus,
+.dataTables_wrapper .dataTables_length select:focus,
+.form-control:focus,
+.custom-select:focus,
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: var(--c1-neon) !important;
+    box-shadow: 0 0 0 3px rgba(217, 163, 95, 0.18) !important;
+}
+
+.alert-success {
+    background: rgba(217, 163, 95, 0.16);
+    border-color: rgba(217, 163, 95, 0.35);
+    color: #fff2df;
+}
+
+.alert-danger {
+    background: rgba(255, 77, 90, 0.15);
+    border-color: rgba(255, 77, 90, 0.35);
+    color: #ffdadd;
+}
+
+.page-item.active .page-link {
+    background: linear-gradient(120deg, var(--c1-neon), var(--c1-neon-2));
+    border-color: transparent;
+    color: #041208;
+}
+
+.page-link {
+    background: rgba(10, 16, 31, 0.85);
+    border-color: var(--c1-line);
+    color: var(--c1-text);
+}

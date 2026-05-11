@@ -1,0 +1,122 @@
+:root {
+    --primary-bg: #111;
+    --primary-text: #fff;
+    --header-bg: #000;
+    --header-text: #fff;
+    --city-selector-bg: #222;
+    --city-selector-border: #00aaff;
+    --auth-btn-bg: #555;
+    --auth-btn-hover-bg: #777;
+    --pelicula-bg: #fff;
+    --pelicula-info-bg: #f4f4f4;
+    --btnScroll-hover-scale: 1.1;
+}
+
+/* Estilo general del body */
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--primary-bg);
+    color: var(--primary-text);
+    margin: 0;
+    padding: 0;
+}
+
+/* Contenedor del formulario de inicio de sesión */
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra horizontalmente el contenido */
+    justify-content: center; /* Centra verticalmente el contenido */
+    height: 100vh; /* Ocupa toda la altura de la ventana */
+}
+
+/* Estilo del logo */
+.logo {
+    width: 100px; /* Ajusta el tamaño del logo */
+    height: auto;
+    margin-bottom: 20px; /* Espacio entre el logo y el formulario */
+}
+
+/* Estilo del encabezado */
+h2 {
+    margin-bottom: 20px; /* Espacio entre el encabezado y el formulario */
+}
+
+/* Estilo del formulario */
+.form-group {
+    margin-bottom: 15px;
+}
+
+input[type="email"], input[type="password"] {
+    width: 300px; /* Ancho del campo de entrada */
+    padding: 10px; /* Espaciado interno */
+    border: 1px solid #ccc; /* Bordes del campo de entrada */
+    border-radius: 5px; /* Bordes redondeados */
+}
+
+/* Estilo del botón de autenticación */
+.auth-btn {
+    width: 100%; /* Botón ocupará todo el ancho del contenedor */
+    padding: 10px;
+    background-color: var(--auth-btn-bg);
+    color: var(--primary-text);
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor al pasar por encima */
+    transition: background-color 0.3s; /* Transición suave */
+}
+
+.auth-btn:hover {
+    background-color: var(--auth-btn-hover-bg); /* Cambia el color al pasar el ratón */
+}
+
+/* Estilo de los enlaces */
+.links {
+    margin-top: 20px; /* Espacio superior */
+}
+
+.links a {
+    color: var(--primary-text);
+    text-decoration: none; /* Sin subrayado */
+}
+
+.links a:hover {
+    text-decoration: underline; /* Subrayado al pasar el ratón */
+}
+
+@media (max-width: 768px) {
+    :root {
+        --font-size-base: 14px; /* Ajuste de tamaño de fuente en dispositivos móviles */
+    }
+
+    .login-container {
+        padding: 10px; /* Reducir el padding en pantallas pequeñas */
+    }
+
+    h2 {
+        font-size: 1.5rem; /* Tamaño de encabezado más pequeño en móviles */
+    }
+
+    .auth-btn, input[type="email"], input[type="password"] {
+        max-width: 100%; /* Ancho completo sin límite máximo en móviles */
+    }
+
+    .links {
+        font-size: 0.875rem; /* Texto más pequeño para enlaces */
+    }
+}
+
+/* Responsividad para pantallas muy pequeñas (como teléfonos en modo horizontal) */
+@media (max-width: 480px) {
+    .logo {
+        width: 60px; /* Ajusta el tamaño del logo para pantallas muy pequeñas */
+    }
+
+    h2 {
+        font-size: 1.2rem; /* Encabezado aún más pequeño en pantallas muy pequeñas */
+    }
+
+    input[type="email"], input[type="password"], .auth-btn {
+        padding: 8px; /* Reducir el padding para campos de entrada y botones */
+    }
+}
