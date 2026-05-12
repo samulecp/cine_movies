@@ -126,7 +126,7 @@
         </main>
 
         <footer class="modern-footer reveal">
-            <p>&copy; 2026 CineMarvel. Todos los derechos reservados.</p>
+            <p>&copy; 2026 CineMovies. Todos los derechos reservados.</p>
         </footer>
 
         <script>

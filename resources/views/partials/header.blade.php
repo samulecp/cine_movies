@@ -13,8 +13,7 @@
                 <div class="dropdown">
                     <select id="cityDropdown" class="city-selector">
                         <option value="Santa Cruz">Santa Cruz</option>
-                        <option value="La Paz">La Paz</option>
-                        <option value="Cochabamba">Cochabamba</option>
+                        
                     </select>
                 </div>
             </li>
