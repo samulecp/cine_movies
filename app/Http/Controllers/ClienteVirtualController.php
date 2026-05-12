@@ -7,6 +7,8 @@ use App\Models\User;
 use App\Models\ClienteVirtual;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Bitacora;
 
 
 class ClienteVirtualController extends Controller
@@ -64,7 +66,10 @@ class ClienteVirtualController extends Controller
                 'Iduser' => $usuario->id,
             ]);
         });
-
+        $this->registrarBitacora(
+    'CREATE',
+    'Creó cliente virtual: ' . $request->name
+);
         return redirect('/clienteVirtual');
     }
 
@@ -127,7 +132,10 @@ class ClienteVirtualController extends Controller
                 'carnet' => $validated['carnet'],
             ]);
         }
-
+        $this->registrarBitacora(
+    'UPDATE',
+    'Editó cliente virtual: ' . $request->name
+);
         return redirect('/clienteVirtual');
     }
 
@@ -143,11 +151,29 @@ class ClienteVirtualController extends Controller
      if ($usuario)
      {
         $usuario->delete();
+        $this->registrarBitacora(
+    'DELETE',
+    'Eliminó cliente virtual: ' . $usuario->name
+);
         return redirect('/clienteVirtual')->with('success', 'Usuario eliminado exitosamente');
      } else
      {
         return redirect('/clienteVirtual')->with('error', 'Usuario no encontrado');
      }
+     
     }
+
+
+    private function registrarBitacora($accion, $descripcion)
+{
+    Bitacora::create([
+        'user_id' => Auth::id(),
+        'accion' => $accion,
+        'descripcion' => $descripcion,
+        'fecha_hora' => now(),
+        'ip_address' => request()->ip(),
+        'device_info' => request()->userAgent(),
+    ]);
+}
 
  }

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Bitacora;
 class UsuarioController extends Controller
 {
     /**
@@ -38,6 +40,10 @@ class UsuarioController extends Controller
         $usuarios->password = Hash::make($request->get('password'));
         $usuarios->role= 'adm';
         $usuarios->save();
+        $this->registrarBitacora(
+    'CREATE',
+    'Creó administrador: ' . $request->name
+    );
         return redirect('/usuario');
     }
 
@@ -62,6 +68,10 @@ class UsuarioController extends Controller
         $usuarios->password= $usuarios->password;
         $usuarios->role= 'adm';
         $usuarios->save();
+        $this->registrarBitacora(
+    'UPDATE',
+    'Editó administrador: ' . $request->name
+    );
         return redirect('/usuario');
     }
 
@@ -76,10 +86,27 @@ class UsuarioController extends Controller
      if ($usuario)
      {
         $usuario->delete();
-        return redirect('/usuario')->with('success', 'Proveedor eliminado exitosamente');
+        $this->registrarBitacora(
+    'DELETE',
+    'Eliminó administrador: ' . $usuario->nombre
+    );
+        return redirect('/usuario')->with('success', 'Adm eliminado exitosamente');
      } else
      {
-        return redirect('/usuario')->with('error', 'Proveedor no encontrado');
+        return redirect('/usuario')->with('error', 'Adm no encontrado');
      }
     }
+
+    private function registrarBitacora($accion, $descripcion)
+{
+    Bitacora::create([
+        'user_id' => Auth::id(),
+        'accion' => $accion,
+        'descripcion' => $descripcion,
+        'fecha_hora' => now(),
+        'ip_address' => request()->ip(),
+        'device_info' => request()->userAgent(),
+    ]);
+}
+
 }

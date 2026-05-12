@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PeliculaController;
 use App\Http\Controllers\GeneroController;
 use App\Http\Controllers\ClasificacionController;
+use App\Http\Controllers\ProveedorController;
 
 
 
@@ -103,3 +104,9 @@ Route::resource('peliculas', PeliculaController::class)
     
     Route::resource('generos', GeneroController::class)->middleware('role:adm');
     Route::resource('clasificaciones', ClasificacionController::class)->middleware('role:adm');
+    
+
+    Route::resource('proveedor', ProveedorController::class)->middleware('role:adm');
+
+
+

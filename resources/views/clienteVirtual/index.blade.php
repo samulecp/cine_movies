@@ -33,9 +33,15 @@
                         <td class="text-break">{{ $usu->email }}</td>
                         <td class="text-nowrap">
                             <div class="btn-group btn-group-sm" role="group">
-                                <a href="{{ route('clienteVirtual.show', $usu->id) }}" class="btn btn-success btn-sm" title="Ver detalles">
-                                    <i class="fas fa-eye"></i> <span class="d-none d-md-inline">Ver</span>
-                                </a>
+                                <a href="{{ route('clienteVirtual.edit', $usu->id) }}" class="btn btn-warning btn-sm" title="Editar cliente">
+
+    <i class="fas fa-edit"></i>
+
+    <span class="d-none d-md-inline">
+        Editar
+    </span>
+
+</a>
                                 <form action="{{ route('clienteVirtual.destroy', $usu->id) }}" method="POST" style="display:inline;" class="delete-form">
                                     @csrf
                                     @method('DELETE')

@@ -229,7 +229,15 @@ return [
             'icon' => 'fas fa-tags',
         ],
 
+        
+
     ],
+    
+],
+[
+    'text' => 'Gestión Proveedores',
+    'icon' => 'fas fa-truck',
+    'route' => 'proveedor.index',
 ],
 
 

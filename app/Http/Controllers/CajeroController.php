@@ -6,6 +6,8 @@ use App\Models\User;
 use App\Models\Cajero;
 use App\Models\Puesto;
 use Illuminate\Support\Facades\DB;
+use App\Models\Bitacora;
+use Illuminate\Support\Facades\Auth;
 
 class CajeroController extends Controller
 {
@@ -25,7 +27,7 @@ class CajeroController extends Controller
         if (! $puestoCajero) {
             return redirect('/cajero')->with('error', 'No existe un puesto configurado con nombre "cajero".');
         }
-
+        
         return view('cajero.create', compact('puestoCajero'));
     }
 
@@ -63,6 +65,11 @@ class CajeroController extends Controller
                 'Idpuesto' => $puestoCajero->id,
             ]);
         });
+
+        $this->registrarBitacora(
+    'CREATE',
+    'Creó cajero: ' . $request->name
+);
 
         return redirect('/cajero');
     }
@@ -148,6 +155,10 @@ class CajeroController extends Controller
         } else {
             return redirect()->back()->with('error', 'Cajero no encontrado');
         }
+        $this->registrarBitacora(
+    'UPDATE',
+    'Editó cajero: ' . $request->name
+);
 
         return redirect()->route('cajero.index')
             ->with('success', 'Datos del cajero actualizados correctamente')
@@ -168,11 +179,28 @@ public function destroy($id)
         if ($usuario->cajero) {
             $usuario->cajero->delete();
         }
+        $this->registrarBitacora(
+    'DELETE',
+    'Eliminó cajero: ' . $usuario->name
+);
         $usuario->delete(); // Luego elimina el usuario
         return redirect('/cajero')->with('success', 'Usuario eliminado exitosamente');
     } else {
         return redirect('/cajero')->with('error', 'Usuario no encontrado');
     }
+    
+}
+
+private function registrarBitacora($accion, $descripcion)
+{
+    Bitacora::create([
+        'user_id' => Auth::id(),
+        'accion' => $accion,
+        'descripcion' => $descripcion,
+        'fecha_hora' => now(),
+        'ip_address' => request()->ip(),
+        'device_info' => request()->userAgent(),
+    ]);
 }
 
 

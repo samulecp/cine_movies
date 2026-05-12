@@ -1,9 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-
+use App\Models\Bitacora;
 use App\Models\ClientePresencial;
 
 class ClientePresencialController extends Controller
@@ -43,7 +43,12 @@ class ClientePresencialController extends Controller
         $usuarios->ci = $request->get('ci');
         $usuarios->nit = $request->get('nit');
         $usuarios->save();
+        $this->registrarBitacora(
+    'CREATE',
+    'Creó cliente presencial: ' . $request->nombre
+);
         return redirect('/clientePresencial');
+        
     }
 
 
@@ -65,7 +70,12 @@ class ClientePresencialController extends Controller
         $usuarios->ci= $request->get('ci');
         $usuarios->nit= $request->get('nit');
         $usuarios->save();
+        $this->registrarBitacora(
+    'UPDATE',
+    'Editó cliente presencial: ' . $request->nombre
+);
         return redirect('/clientePresencial');
+        
     }
 
     /**
@@ -80,11 +90,29 @@ class ClientePresencialController extends Controller
      if ($usuario)
      {
         $usuario->delete();
+        $this->registrarBitacora(
+    'DELETE',
+    'Eliminó cliente presencial: ' . $usuario->nombre
+);
         return redirect('/clientePresencial')->with('success', 'Usuario eliminado exitosamente');
      } else
      {
         return redirect('/clientePresencial')->with('error', 'Usuario no encontrado');
      }
+     
     }
+
+
+    private function registrarBitacora($accion, $descripcion)
+{
+    Bitacora::create([
+        'user_id' => Auth::id(),
+        'accion' => $accion,
+        'descripcion' => $descripcion,
+        'fecha_hora' => now(),
+        'ip_address' => request()->ip(),
+        'device_info' => request()->userAgent(),
+    ]);
+}
 
  }
