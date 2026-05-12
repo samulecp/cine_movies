@@ -239,6 +239,7 @@ return [
     'icon' => 'fas fa-truck',
     'route' => 'proveedor.index',
 ],
+[ 'text' => 'Puestos', 'route' => 'puestos.index', 'icon' => 'fas fa-user-tie', ],
 
 
     ],

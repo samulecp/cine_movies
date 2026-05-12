@@ -14,6 +14,7 @@ use App\Http\Controllers\PeliculaController;
 use App\Http\Controllers\GeneroController;
 use App\Http\Controllers\ClasificacionController;
 use App\Http\Controllers\ProveedorController;
+use App\Http\Controllers\PuestoController;
 
 
 
@@ -110,3 +111,4 @@ Route::resource('peliculas', PeliculaController::class)
 
 
 
+ Route::resource('puestos', PuestoController::class)->middleware('role:adm');
