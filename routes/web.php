@@ -15,7 +15,11 @@ use App\Http\Controllers\GeneroController;
 use App\Http\Controllers\ClasificacionController;
 use App\Http\Controllers\ProveedorController;
 use App\Http\Controllers\PuestoController;
-
+use App\Http\Controllers\FormatoController;
+use App\Http\Controllers\SalaController;
+use App\Http\Controllers\FilaController;
+use App\Http\Controllers\ColumnaController;
+use App\Http\Controllers\ButacaController;
 
 
 /*
@@ -102,13 +106,21 @@ Route::middleware(['auth'])->group(function () {
 Route::resource('peliculas', PeliculaController::class)
     ->middleware('role:adm');
 
-    
-    Route::resource('generos', GeneroController::class)->middleware('role:adm');
-    Route::resource('clasificaciones', ClasificacionController::class)->middleware('role:adm');
-    
 
-    Route::resource('proveedor', ProveedorController::class)->middleware('role:adm');
+Route::resource('generos', GeneroController::class)->middleware('role:adm');
+Route::resource('clasificaciones', ClasificacionController::class)->middleware('role:adm');
 
 
+Route::resource('proveedor', ProveedorController::class)->middleware('role:adm');
 
- Route::resource('puestos', PuestoController::class)->middleware('role:adm');
+
+
+Route::resource('puestos', PuestoController::class)->middleware('role:adm');
+
+
+
+Route::resource('formatos', FormatoController::class);
+Route::resource('salas', SalaController::class);
+Route::resource('filas', FilaController::class);
+Route::resource('columnas', ColumnaController::class);
+Route::resource('butacas', ButacaController::class);

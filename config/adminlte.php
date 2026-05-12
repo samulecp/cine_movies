@@ -24,30 +24,30 @@ return [
     'logo_img_alt' => 'Admin Logo',
 
 
- 'auth_logo' => [ // Logo de autenticación
-    'enabled' => false,
-    'img' => [
-        'path' => 'img/logofinal.jpeg',
-        'alt' => 'Auth Logo',
-        'class' => '',
-        'width' => 50,
-        'height' => 50,
+    'auth_logo' => [ // Logo de autenticación
+        'enabled' => false,
+        'img' => [
+            'path' => 'img/logofinal.jpeg',
+            'alt' => 'Auth Logo',
+            'class' => '',
+            'width' => 50,
+            'height' => 50,
+        ],
     ],
-],
 
 
 
-'preloader' => [ // Preloader de carga entre vistas
-    'enabled' => true,
-    'mode' => 'fullscreen',
-    'img' => [
-        'path' => 'img/logofinal.jpeg',
-        'alt' => 'Preloader Mi Aplicación',
-        'effect' => 'bounce',
-        'width' => 80,
-        'height' => 80,
+    'preloader' => [ // Preloader de carga entre vistas
+        'enabled' => true,
+        'mode' => 'fullscreen',
+        'img' => [
+            'path' => 'img/logofinal.jpeg',
+            'alt' => 'Preloader Mi Aplicación',
+            'effect' => 'bounce',
+            'width' => 80,
+            'height' => 80,
+        ],
     ],
-],
 
 
     // User menu
@@ -139,15 +139,15 @@ return [
             'topnav_right' => false,
         ],
 
-   [
-    'type' => 'navbar-search',
-    'text' => 'search',
-    'topnav_right' => true,
-    'url' => 'navbar/search',
-    'method' => 'post',
-    'input_name' => 'searchVal',
-    'id' => 'navbarSearch'
-],
+        [
+            'type' => 'navbar-search',
+            'text' => 'search',
+            'topnav_right' => true,
+            'url' => 'navbar/search',
+            'method' => 'post',
+            'input_name' => 'searchVal',
+            'id' => 'navbarSearch'
+        ],
 
 
         [
@@ -206,40 +206,71 @@ return [
         ],
 
         [
-    'text' => 'Gestión de Películas',
-    'icon' => 'fas fa-film',
-    'role'  => 'administrador',
+            'text' => 'Gestión de Películas',
+            'icon' => 'fas fa-film',
+            'role'  => 'administrador',
+            'submenu' => [
+
+                [
+                    'text' => 'Películas',
+                    'route' => 'peliculas.index',
+                    'icon' => 'fas fa-video',
+                ],
+
+                [
+                    'text' => 'Géneros',
+                    'route' => 'generos.index',
+                    'icon' => 'fas fa-list',
+                ],
+
+                [
+                    'text' => 'Clasificaciones',
+                    'route' => 'clasificaciones.index',
+                    'icon' => 'fas fa-tags',
+                ],
+
+
+
+            ],
+
+        ],
+        [
+            'text' => 'Gestión Proveedores',
+            'icon' => 'fas fa-truck',
+            'route' => 'proveedor.index',
+        ],
+        ['text' => 'Puestos', 'route' => 'puestos.index', 'icon' => 'fas fa-user-tie',],
+        [
+    'text' => 'Gestionar Espacios',
+    'icon' => 'fas fa-building',
     'submenu' => [
-
         [
-            'text' => 'Películas',
-            'route' => 'peliculas.index',
-            'icon' => 'fas fa-video',
-        ],
-
+    'text' => 'Formatos',
+    'route' => 'formatos.index',
+    'icon' => 'fas fa-film',
+],
         [
-            'text' => 'Géneros',
-            'route' => 'generos.index',
-            'icon' => 'fas fa-list',
+            'text' => 'Salas',
+            'route' => 'salas.index',
+            'icon' => 'fas fa-door-open',
         ],
-
         [
-            'text' => 'Clasificaciones',
-            'route' => 'clasificaciones.index',
-            'icon' => 'fas fa-tags',
+            'text' => 'Filas',
+            'route' => 'filas.index',
+            'icon' => 'fas fa-grip-lines',
         ],
-
-        
-
+        [
+            'text' => 'Columnas',
+            'route' => 'columnas.index',
+            'icon' => 'fas fa-columns',
+        ],
+        [
+            'text' => 'Butacas',
+            'route' => 'butacas.index',
+            'icon' => 'fas fa-couch',
+        ],
     ],
-    
 ],
-[
-    'text' => 'Gestión Proveedores',
-    'icon' => 'fas fa-truck',
-    'route' => 'proveedor.index',
-],
-[ 'text' => 'Puestos', 'route' => 'puestos.index', 'icon' => 'fas fa-user-tie', ],
 
 
     ],
