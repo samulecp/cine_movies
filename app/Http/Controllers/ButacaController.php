@@ -100,6 +100,11 @@ class ButacaController extends Controller
     'Eliminó la butaca: ' . $butaca->id
 );
         $butaca->delete();
+        $butacas = Butaca::with([
+            'sala',
+            'fila',
+            'columna'
+        ])->get();
         return view('butacas.index', compact('butacas'));
     }
 

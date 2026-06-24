@@ -165,7 +165,7 @@
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2024 CineMarvel. Todos los derechos reservados.</p>
+        <p>&copy; 2026 CineMovies. Todos los derechos reservados.</p>
     </footer>
     <head>
         <!-- Otros enlaces generales -->

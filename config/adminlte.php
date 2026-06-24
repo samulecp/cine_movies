@@ -241,36 +241,52 @@ return [
         ],
         ['text' => 'Puestos', 'route' => 'puestos.index', 'icon' => 'fas fa-user-tie',],
         [
-    'text' => 'Gestionar Espacios',
-    'icon' => 'fas fa-building',
-    'submenu' => [
-        [
-    'text' => 'Formatos',
-    'route' => 'formatos.index',
-    'icon' => 'fas fa-film',
-],
-        [
-            'text' => 'Salas',
-            'route' => 'salas.index',
-            'icon' => 'fas fa-door-open',
+            'text' => 'Gestionar Espacios',
+            'icon' => 'fas fa-building',
+            'submenu' => [
+                [
+                    'text' => 'Formatos',
+                    'route' => 'formatos.index',
+                    'icon' => 'fas fa-film',
+                ],
+                [
+                    'text' => 'Salas',
+                    'route' => 'salas.index',
+                    'icon' => 'fas fa-door-open',
+                ],
+                [
+                    'text' => 'Filas',
+                    'route' => 'filas.index',
+                    'icon' => 'fas fa-grip-lines',
+                ],
+                [
+                    'text' => 'Columnas',
+                    'route' => 'columnas.index',
+                    'icon' => 'fas fa-columns',
+                ],
+                [
+                    'text' => 'Butacas',
+                    'route' => 'butacas.index',
+                    'icon' => 'fas fa-couch',
+                ],
+            ],
+            
         ],
         [
-            'text' => 'Filas',
-            'route' => 'filas.index',
-            'icon' => 'fas fa-grip-lines',
-        ],
-        [
-            'text' => 'Columnas',
-            'route' => 'columnas.index',
-            'icon' => 'fas fa-columns',
-        ],
-        [
-            'text' => 'Butacas',
-            'route' => 'butacas.index',
-            'icon' => 'fas fa-couch',
-        ],
-    ],
-],
+                'text' => 'Gestionar Proyecciones',
+                'route' => 'proyecciones.index',
+                'icon' => 'fa-solid fa-tv',
+            ],
+            [
+                'text' => 'Reservar Asientos',
+                'url'  => 'asientos.seleccionar',
+                'icon' => 'fas fa-chair',
+            ],
+            [
+                'text' => 'Lenguajes',
+                'url'  => 'lenguajes',
+                'icon' => 'fas fa-chair',
+            ],
 
 
     ],

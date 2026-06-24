@@ -59,7 +59,8 @@ class SalaController extends Controller
      */
     public function edit(Sala $sala)
     {
-        return view('salas.edit', compact('salas'));
+        $formatos = Formato::all();
+        return view('salas.edit', compact('sala','formatos'));
     }
 
     /**

@@ -15,4 +15,9 @@ class Sala extends Model
     {
         return $this->hasMany(Butaca::class);
     }
+
+    public function proyecciones()
+{
+    return $this->hasMany(Proyeccion::class);
+}
 }

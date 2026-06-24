@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>CineMarvel - Experiencia de Cine Premium</title>
+        <title>CineMovies</title>
 
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=poppins:400,500,600,700,800&display=swap" rel="stylesheet" />
@@ -101,28 +101,7 @@
                 </div>
             </section>
 
-            <section id="horarios" class="cartelera-section reveal">
-                <h2 class="cartelera-title">Horarios de hoy</h2>
-                <div class="peliculas-container">
-                    <article class="pelicula reveal">
-                        <div class="pelicula-overlay" style="opacity: 1; transform: translateY(0); position: static; background: transparent;">
-                            Star Wars<br>14:00 | 17:30 | 21:00
-                        </div>
-                    </article>
-
-                    <article class="pelicula reveal">
-                        <div class="pelicula-overlay" style="opacity: 1; transform: translateY(0); position: static; background: transparent;">
-                            Interestelar<br>13:00 | 16:40 | 20:20
-                        </div>
-                    </article>
-
-                    <article class="pelicula reveal">
-                        <div class="pelicula-overlay" style="opacity: 1; transform: translateY(0); position: static; background: transparent;">
-                            Deadpool<br>15:15 | 18:45 | 22:10
-                        </div>
-                    </article>
-                </div>
-            </section>
+           
         </main>
 
         <footer class="modern-footer reveal">

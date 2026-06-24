@@ -20,7 +20,7 @@ class LoginResponse implements LoginResponseContract
         return match ($user->role) {
             'adm' => redirect()->route('admin.dashboard'),
             'tra' => redirect('/cajero'),
-            'usu' => redirect('/#cartelera'),
+            'usu' => redirect()->route('cartelera.index'),
             default => redirect('/'),
         };
     }
