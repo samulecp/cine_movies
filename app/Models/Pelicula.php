@@ -29,4 +29,9 @@ class Pelicula extends Model
     {
         return $this->belongsTo(Clasificacion::class);
     }
+
+    public function proyecciones()
+{
+    return $this->hasMany(Proyeccion::class);
+}
 }

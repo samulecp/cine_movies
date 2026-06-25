@@ -13,6 +13,7 @@ class Pago extends Model
 
     protected $fillable = [
         'venta_pelicula_id',
+        'venta_producto_id',
         'metodo_pago',
         'monto',
         'estado'
@@ -23,6 +24,14 @@ class Pago extends Model
         return $this->belongsTo(
             VentaPelicula::class,
             'venta_pelicula_id'
+        );
+    }
+
+    public function ventaProducto()
+    {
+        return $this->belongsTo(
+            VentaProducto::class,
+            'venta_producto_id'
         );
     }
 }

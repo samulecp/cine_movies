@@ -152,7 +152,7 @@ public function ticket(VentaPelicula $venta)
     );
 
     return view(
-        'ventas.ticket',
+        'pagos.ticket',
         compact('venta')
     );
 }
@@ -169,7 +169,7 @@ public function funciones(Pelicula $pelicula)
     ->get();
 
     return view(
-        'cliente.funciones',
+        'peliculas.funciones',
         compact('pelicula', 'proyecciones')
     );
 }

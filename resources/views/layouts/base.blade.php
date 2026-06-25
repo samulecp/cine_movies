@@ -98,8 +98,8 @@
         }
 
         .selectpicker {
-            width: 100%; /* Asegura que los selectores de selección ocupen todo el espacio */
-        }
+            width: 100%; /* Asegura que los selectores de selección ocupen todo el espacio 
+        }*/
 
         .custom-spacing {
             margin-bottom: 40px;

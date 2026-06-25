@@ -1,71 +1,116 @@
-@extends('adminlte::page')
+@extends('layouts.cliente')
 
 @section('title','Pago')
 
 @section('content')
 
-<div class="card">
+<style>
+.payment-box{
+    max-width:600px;
+    margin:auto;
+    border-radius:15px;
+}
 
-    <div class="card-header">
+.total-price{
+    font-size:32px;
+    font-weight:bold;
+    color:#28a745;
+}
 
-        <h3>
+.method-box{
+    display:flex;
+    gap:10px;
+    margin-top:10px;
+}
 
-            {{ $venta->proyeccion->pelicula->nombre }}
+.method-option{
+    flex:1;
+    border:1px solid #555;
+    padding:12px;
+    border-radius:10px;
+    cursor:pointer;
+    text-align:center;
+    transition:.2s;
+}
 
-        </h3>
+.method-option:hover{
+    transform:scale(1.03);
+}
 
+.method-option input{
+    display:none;
+}
+
+.method-option.active{
+    background:#0d6efd;
+    border-color:#0d6efd;
+}
+</style>
+
+<div class="card text-white bg-dark payment-box">
+
+    <div class="card-header text-center">
+        <h3>💳 Confirmar Pago</h3>
+        <small>{{ $venta->proyeccion->pelicula->nombre }}</small>
     </div>
 
     <div class="card-body">
 
-        <h4>
+        {{-- TOTAL --}}
+        <div class="text-center mb-4">
+            <p>Total a pagar</p>
+            <div class="total-price">
+                Bs {{ number_format($venta->precio_total,2) }}
+            </div>
+        </div>
 
-            Total:
-            Bs {{ number_format($venta->precio_total,2) }}
+        <hr>
 
-        </h4>
+        {{-- RESUMEN --}}
+        <p><b>🎬 Película:</b> {{ $venta->proyeccion->pelicula->nombre }}</p>
+        <p><b>🎟 Entradas:</b> {{ $venta->detalles ? $venta->detalles->count() : 0 }}</p>
 
-        <form
-            action="{{ route('pagos.store',$venta->id) }}"
-            method="POST">
+        <hr>
 
+        <form action="{{ route('pagos.store',$venta->id) }}" method="POST">
             @csrf
 
-            <div class="form-group">
+            <label><b>Método de Pago</b></label>
 
-                <label>Método de Pago</label>
+            <div class="method-box">
 
-                <select
-                    name="metodo_pago"
-                    class="form-control">
+                <label class="method-option">
+                    <input type="radio" name="metodo_pago" value="QR" checked>
+                    📱 QR
+                </label>
 
-                    <option value="QR">
-                        QR
-                    </option>
+                <label class="method-option">
+                    <input type="radio" name="metodo_pago" value="Tarjeta">
+                    💳 Tarjeta
+                </label>
 
-                    <option value="Tarjeta">
-                        Tarjeta
-                    </option>
-
-                    <option value="Efectivo">
-                        Efectivo
-                    </option>
-
-                </select>
+                
 
             </div>
 
-            <button
-                class="btn btn-success">
-
+            <button class="btn btn-success btn-block mt-4">
                 Confirmar Pago
-
             </button>
 
         </form>
 
     </div>
-
 </div>
 
-@stop
+<script>
+document.querySelectorAll('.method-option input').forEach(input => {
+    input.addEventListener('change', function(){
+        document.querySelectorAll('.method-option')
+            .forEach(el => el.classList.remove('active'));
+
+        this.parentElement.classList.add('active');
+    });
+});
+</script>
+
+@endsection

@@ -22,9 +22,14 @@ use App\Http\Controllers\ColumnaController;
 use App\Http\Controllers\ButacaController;
 use App\Http\Controllers\LenguajeController;
 use App\Http\Controllers\PagoController;
+use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\ProyeccionController;
 use App\Http\Controllers\ReservaButacaController;
 use App\Http\Controllers\VentaPeliculaController;
+use App\Http\Controllers\CarritoController;
+use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\ReporteController;
+use App\Http\Controllers\VentaProductoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,31 +55,31 @@ Route::middleware([
 ])->group(function () {
     Route::get('/dashboard', function () {
 
-    $user = Auth::user();
+        $user = Auth::user();
 
-    if ($user->role === 'adm') {
-        app(ActivityController::class)
-            ->logActivity('Inicio de sesion', 'Acceso como administrador');
+        if ($user->role === 'adm') {
+            app(ActivityController::class)
+                ->logActivity('Inicio de sesion', 'Acceso como administrador');
 
-        return redirect()->route('admin.dashboard');
-    }
+            return redirect()->route('admin.dashboard');
+        }
 
-    if ($user->role === 'tra') {
-        app(ActivityController::class)
-            ->logActivity('Inicio de sesion', 'Acceso como cajero');
+        if ($user->role === 'tra') {
+            app(ActivityController::class)
+                ->logActivity('Inicio de sesion', 'Acceso como cajero');
 
-        return redirect('/cajero');
-    }
+            return redirect('/cajero');
+        }
 
-    if ($user->role === 'usu') {
-        app(ActivityController::class)
-            ->logActivity('Inicio de sesion', 'Acceso como cliente virtual');
+        if ($user->role === 'usu') {
+            app(ActivityController::class)
+                ->logActivity('Inicio de sesion', 'Acceso como cliente virtual');
 
-        return redirect()->route('cartelera.index');
-    }
+            return redirect()->route('cartelera.index');
+        }
 
-    return redirect('/');
-})->name('dashboard');
+        return redirect('/');
+    })->name('dashboard');
 });
 Route::get('/cartelera', function () {
     return view('cartelera.index');
@@ -134,6 +139,11 @@ Route::get(
     [ReservaButacaController::class, 'seleccionar']
 )->name('asientos.seleccionar');
 
+Route::get(
+    '/proyeccion/{id}/asientos_cliente',
+    [ReservaButacaController::class, 'seleccionarCliente']
+)->name('asientos.seleccionarCliente');
+
 Route::resource('formatos', FormatoController::class)->middleware('role:adm');
 Route::resource('salas', SalaController::class)->middleware('role:adm');
 Route::resource('filas', FilaController::class)->middleware('role:adm');
@@ -145,11 +155,11 @@ Route::post('/reservas', [ReservaButacaController::class, 'store'])
     ->name('reservas.store');
 Route::post(
     '/ventas/resumen',
-    [VentaPeliculaController::class,'resumen']
+    [VentaPeliculaController::class, 'resumen']
 )->name('ventas.resumen');
 Route::post(
     '/ventas',
-    [VentaPeliculaController::class,'store']
+    [VentaPeliculaController::class, 'store']
 )->name('ventas.store');
 
 Route::get(
@@ -164,10 +174,37 @@ Route::post(
 
 Route::get(
     '/ventas/{venta}/ticket',
-    [VentaPeliculaController::class,'ticket']
+    [VentaPeliculaController::class, 'ticket']
 )->name('ventas.ticket');
 
 Route::get(
     '/pelicula/{pelicula}',
     [VentaPeliculaController::class, 'funciones']
 )->name('pelicula.funciones');
+
+Route::get('/tienda', [ProductoController::class, 'tienda'])->name('tienda.index');
+
+Route::post('/carrito/agregar', [CarritoController::class, 'add'])->name('carrito.add');
+Route::get('/carrito', [CarritoController::class, 'index'])->name('carrito.index');
+Route::post('/carrito/checkout', [CarritoController::class, 'checkout'])->name('carrito.checkout');
+
+Route::get('/ticket/productos/{venta}', [VentaProductoController::class, 'ticket'])
+    ->name('ticket.productos');
+
+Route::get('/pagos/productos/{venta}', [PagoController::class, 'createProducto'])
+    ->name('pagos.productos.create');
+
+Route::post('/pagos/productos/{venta}', [PagoController::class, 'storeProducto'])
+    ->name('pagos.productos.store');
+
+Route::middleware(['auth', 'role:adm'])->group(function () {
+
+    Route::resource('categorias', CategoriaController::class);
+    Route::resource('productos', ProductoController::class);
+});
+
+Route::get('/reportes', [ReporteController::class, 'index'])->name('reportes.index');
+
+Route::get('/reportes/pdf', [ReporteController::class, 'pdf'])->name('reportes.pdf');
+
+Route::get('/reportes/csv', [ReporteController::class, 'csv'])->name('reportes.csv');

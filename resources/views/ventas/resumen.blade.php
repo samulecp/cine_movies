@@ -1,10 +1,10 @@
-@extends('adminlte::page')
+@extends('layouts.cliente')
 
 @section('title','Resumen de Compra')
 
 @section('content')
 
-<div class="card">
+<div class="card text-white bg-dark">
 
     <div class="card-header">
 

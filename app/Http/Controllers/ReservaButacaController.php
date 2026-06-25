@@ -35,6 +35,30 @@ use BitacoraTrait;
     );
 }
 
+public function seleccionarCliente($id)
+{
+    $proyeccion = Proyeccion::findOrFail($id);
+
+    $butacas = Butaca::with('fila','columna')
+        ->get();
+
+    $ocupadas = ReservaButaca::where(
+        'proyeccion_id',
+        $id
+    )
+    ->pluck('butaca_id')
+    ->toArray();
+
+    return view(
+        'reservas.asientos_cliente',
+        compact(
+            'proyeccion',
+            'butacas',
+            'ocupadas'
+        )
+    );
+}
+
 public function store(Request $request)
 {
     $request->validate([

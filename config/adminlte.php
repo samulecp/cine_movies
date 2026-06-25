@@ -164,13 +164,7 @@ return [
             'url' => 'admin/blog',
             'can' => 'manage-blog',
         ],
-        [
-            'text' => 'pages',
-            'url' => 'admin/pages',
-            'icon' => 'far fa-fw fa-file',
-            'label' => 4,
-            'label_color' => 'success',
-        ],
+
         ['header' => 'PANEL ADMINISTRADOR'],
         [
             'text' => 'Dashboard Admin',
@@ -202,6 +196,7 @@ return [
                     'text' => 'Cajeros',
                     'route' => 'cajero.index',
                 ],
+                ['text' => 'Puestos', 'route' => 'puestos.index', 'icon' => 'fas fa-user-tie',],
             ],
         ],
 
@@ -229,26 +224,61 @@ return [
                     'icon' => 'fas fa-tags',
                 ],
 
-
-
-            ],
-
-        ],
-        [
-            'text' => 'Gestión Proveedores',
-            'icon' => 'fas fa-truck',
-            'route' => 'proveedor.index',
-        ],
-        ['text' => 'Puestos', 'route' => 'puestos.index', 'icon' => 'fas fa-user-tie',],
-        [
-            'text' => 'Gestionar Espacios',
-            'icon' => 'fas fa-building',
-            'submenu' => [
                 [
                     'text' => 'Formatos',
                     'route' => 'formatos.index',
                     'icon' => 'fas fa-film',
                 ],
+                [
+                'text' => 'Gestionar Proyecciones',
+                'route' => 'proyecciones.index',
+                'icon' => 'fas fa-video',
+            ],
+            
+            [
+                'text' => 'Lenguajes',
+                'url'  => 'lenguajes',
+                'icon' => 'fas fa-language',
+            ],
+
+            ],
+
+        ],
+
+        [
+            'text' => 'Ventas',
+            'icon' => 'fas fa-shopping-cart',
+            'role'  => 'administrador',
+            'submenu' => [
+
+                [
+                'text' => 'Categorías',
+                'url'  => 'categorias',
+                'icon' => 'fas fa-list-alt',
+            ],
+             [
+                'text' => 'Productos',
+                'url'  => 'productos',
+                'icon' => 'fas fa-shopping-cart',
+            ],
+            [
+            'text' => 'Gestión Proveedores',
+            'icon' => 'fas fa-truck',
+            'route' => 'proveedor.index',
+        ],
+
+
+            ],
+        ],    
+
+
+        
+        
+        [
+            'text' => 'Gestionar Espacios',
+            'icon' => 'fas fa-building',
+            'submenu' => [
+                
                 [
                     'text' => 'Salas',
                     'route' => 'salas.index',
@@ -270,23 +300,18 @@ return [
                     'icon' => 'fas fa-couch',
                 ],
             ],
+
+            
             
         ],
         [
-                'text' => 'Gestionar Proyecciones',
-                'route' => 'proyecciones.index',
-                'icon' => 'fa-solid fa-tv',
-            ],
-            [
-                'text' => 'Reservar Asientos',
-                'url'  => 'asientos.seleccionar',
-                'icon' => 'fas fa-chair',
-            ],
-            [
-                'text' => 'Lenguajes',
-                'url'  => 'lenguajes',
-                'icon' => 'fas fa-chair',
-            ],
+            'text' => 'Reportes',
+            'icon' => 'fas fa-chart-bar',
+            'route' => 'reportes.index',
+        ],
+        
+
+            
 
 
     ],

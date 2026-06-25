@@ -19,6 +19,11 @@ return new class extends Migration
         ->constrained('venta_peliculas')
         ->cascadeOnDelete();
 
+        $table->foreignId('venta_producto_id')
+        ->nullable()
+        ->constrained('venta_productos')
+        ->cascadeOnDelete();
+
     $table->string('metodo_pago');
 
     $table->decimal('monto',8,2);

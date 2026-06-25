@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Pago;
 use App\Models\VentaPelicula;
 use App\Models\ReservaButaca;
+use App\Models\VentaProducto;
 use App\Traits\BitacoraTrait;
 use Illuminate\Http\Request;
 
@@ -66,4 +67,31 @@ class PagoController extends Controller
                 $venta->id
             );
     }
+
+    public function createProducto($id)
+{
+    $venta = VentaProducto::with('detalles.producto')->findOrFail($id);
+
+    return view('pagos.productos', compact('venta'));
+}
+
+public function storeProducto(Request $request, $id)
+{
+    $venta = VentaProducto::findOrFail($id);
+
+    // crear pago
+    Pago::create([
+        'venta_producto_id' => $venta->id,
+        'metodo_pago' => $request->metodo_pago,
+        'monto' => $venta->total,
+        'estado' => 'aprobado'
+    ]);
+
+    // actualizar estado venta
+    $venta->update([
+        'estado' => 'pagado'
+    ]);
+
+    return redirect()->route('ticket.productos', $venta->id);
+}
 }

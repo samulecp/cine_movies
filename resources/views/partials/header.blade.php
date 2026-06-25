@@ -10,6 +10,11 @@
             <li><a href="#cartelera">Cartelera</a></li>
             <li><a href="#horarios">Horarios</a></li>
             <li>
+            <a href="{{ route('tienda.index') }}">
+                Confitería
+            </a>
+        </li>
+            <li>
                 <div class="dropdown">
                     <select id="cityDropdown" class="city-selector">
                         <option value="Santa Cruz">Santa Cruz</option>
